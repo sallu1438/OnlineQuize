@@ -1,0 +1,69 @@
+﻿@model OnlineQuize.Models.Category
+
+@{
+    ViewBag.Title = "AddCatagory";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>AddCatagory</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.AdminId, "AdminId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AdminId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AdminId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Catagory" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<table class="table table-responsive" style="overflow:scroll">
+    <thead>
+        <tr>
+            <th> Catagory Id</th>
+            <th>Catagory Name</th>
+            <th>Encrypted Cat Name</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var catagory in ViewBag.catagory)
+        { 
+            <tr>
+                <td>@catagory.CId</td>
+                <td>@catagory.CName</td>
+                <td>@catagory.EncName</td>
+                <td>
+                    <a href="@Url.Action("ViewQuestion","Question", new { cid=catagory.CId})"><input type="button" class="btn btn-success" value="View Question" /></a>
+                </td>
+            </tr>
+        
+        }
+
+
+
+    </tbody>
+</table>
+

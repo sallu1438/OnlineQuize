@@ -1,0 +1,61 @@
+﻿@model OnlineQuize.Models.Question
+@{
+    Layout = null;
+    if (Session["Sid"] == null && Session["SName"]==null)
+    {
+        Response.Redirect("Error.cshtml");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Online Quize</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+        @*@{
+            
+            foreach (var list in ViewBag.qa)
+            {*@
+                <h3> Q  @Html.DisplayFor(model=>model.QName)</h3>
+                <h4>
+                    <b>A) </b>
+                    @Html.RadioButtonFor(model => model.OpA, "OpA")
+                    @Model.OpA
+                </h4>
+
+                <h4>
+                    <b>B) </b>
+                    @Html.RadioButtonFor(model => model.OpB, "OpB")
+                    @Model.OpB
+                </h4>
+                <h4>
+                    <b>C) </b>
+                    @Html.RadioButtonFor(model => model.OpC, "OpC")
+                    @Model.OpC
+                </h4>
+                <h4>
+                    <b>D) </b>
+                    @Html.RadioButtonFor(model => model.OpD, "OpD")
+                    @Model.OpD
+                </h4>
+
+                @*@Html.DisplayFor(model=>model.CuurectAns,"CurrectAns")*@
+                @Html.HiddenFor(model => model.CuurectAns, "CurrectAns")
+
+                @*}
+        }*@
+        <input class="btn btn-success" type="submit" value="Next" />
+            }
+    </div>
+</body>
+</html>

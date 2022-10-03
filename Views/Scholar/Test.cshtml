@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout3s.cshtml";
+}
+
+<h2>Online Quize</h2>
+
+@{
+    foreach (var list in ViewBag.list)
+    {
+
+        <div class="col-md-4" style="border:2px solid; padding:4px;  ">
+            <div class="card w-50">
+                <div class="card-body">
+                    <h5 class="card-title">@list.CName</h5>
+                    
+                    <p class="card-text">This is Demom Purpose and Test purspose only don't panic.</p>
+                    <a href="@Url.Action("startTest","Scholar",new {qid=list.EncName})" class="btn btn-success">Start Test</a>
+                </div>
+            </div>
+        </div>
+
+    }
+}

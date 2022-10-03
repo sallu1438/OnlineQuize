@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+
+    @*@if (Session["Id"]==null)
+    {
+        Response.Redirect("Error");
+
+    }*@
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin:auto;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2" style="color:white; height:50px; line-height:50px; width:100%; background-color:#000000">
+            <center> <span style="font-size:25px;">Dashboard</span> <sub>V1.0</sub></center>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2" style="color: white; height: 900px; background-color: #000000;">
+
+                <div class="container" style="width:100%;">
+                    <div>
+                        Hello ! @Session["Name"]
+                    </div>
+                    <hr />
+                    <br />
+
+                    
+                    <div class="list-group" style="background-color: #000000; width:;">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            Reports
+                        </a>
+                        <a href="@Url.Action("AddCatagory","Catagory")" class="list-group-item list-group-item-action">Add Catagory</a>
+                        <a href="@Url.Action("AddQuestion","Question")" class="list-group-item list-group-item-action">Add Quetions</a>
+                        <a href="#" class="list-group-item list-group-item-action"> Summary</a>
+                        <a href="@Url.Action("Logout","Admin")" class="list-group-item list-group-item-action">Logout</a>
+                       
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-10 col-md-10 col-lg-10" style="height:900px">
+           
+
+              
+
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+
+
+
+</body>
+</html>

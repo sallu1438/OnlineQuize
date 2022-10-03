@@ -1,0 +1,40 @@
+﻿@model OnlineQuize.Models.Question
+@{
+    ViewBag.Title = "ViewQuestion";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2> Questions </h2>
+
+@{
+    var i = 1;
+    foreach (var list in ViewBag.Qlist)
+    {
+        <b>Q @i. @list.QName</b>
+        <a href="@Url.Action("UpdateQuestion","Question", new { Qid=list.QId,CatId=list.CatId})"><input type="button" class="btn btn-success" value="Edit" /></a>
+        <a href="@Url.Action("DeleteQuestion","Question", new { Qid=list.QId,CatId=list.CatId})"><input type="button" class="btn btn-danger" value="Delete" /></a>
+        <h4>
+            <b>A) </b>
+            @list.OpA
+        </h4>
+        <h4>
+            <b>B) </b>
+            @list.OpB
+        </h4>
+        <h4>
+            <b>C) </b>
+            @list.OpC
+        </h4>
+        <h4>
+            <b>D) </b>
+            @list.OpD
+        </h4>
+        <b>Currect Answer : </b>
+        @*@Html.DisplayFor(model=>model.CuurectAns,"CurrectAns")*@
+        @list.CuurectAns
+        <br />
+
+        i++;
+    }
+}
+

@@ -1,0 +1,39 @@
+﻿@model OnlineQuize.Models.Scholar
+
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/_Layout3s.cshtml";
+}
+
+<h2>profile</h2>
+
+<table class="table">
+    @*<thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>*@
+    <tbody>
+        <tr>
+            <td>Scholar Name </td>
+            <td>@Model.Name</td>
+            <td></td>
+            <td rowspan="3">
+                <img src="@Url.Content(@Model.Profile)" height="200px" style="border-radius:50%" width="200px" />
+            </td>
+        </tr>
+        <tr>
+
+            <td>Email </td>
+            <td>@Model.Email </td>
+        </tr>
+        <tr>
+
+            <td>Mobile N0. </td>
+            <td>@Model.Mobile </td>
+        </tr>
+    </tbody>
+</table>
